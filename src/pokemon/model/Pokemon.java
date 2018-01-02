@@ -7,7 +7,7 @@ public abstract class Pokemon
 	private double enhancementModifier;
 	private int number;
 	private String name;
-	private boolean canEVolve;
+	private boolean canEvolve;
 	
 	public Pokemon(int number, String name)
 	{
@@ -87,9 +87,9 @@ public abstract class Pokemon
 	/**
 	 * @return the canEVolve
 	 */
-	public boolean isCanEVolve()
+	public boolean isCanEvolve()
 	{
-		return canEVolve;
+		return canEvolve;
 	}
 
 	/**
@@ -125,10 +125,10 @@ public abstract class Pokemon
 	}
 
 	/**
-	 * @param canEVolve the canEVolve to set
+	 * @param canEvolve the canEVolve to set
 	 */
-	public void setCanEVolve(boolean canEVolve)
+	public void setCanEVolve(boolean canEvolve)
 	{
-		this.canEVolve = canEVolve;
+		this.canEvolve = canEvolve;
 	}
 }
