@@ -49,7 +49,7 @@ public class PokemonPanel extends JPanel
 	{
 		super();
 		this.appController = appController;
-		setupPanel();
+		
 		
 		healthLabel = new JLabel("Health");
 		attackLabel = new JLabel("Attack");
@@ -77,6 +77,10 @@ public class PokemonPanel extends JPanel
 		secondType = new JPanel();
 		thirdType = new JPanel();
 		fourthType = new JPanel();
+		
+		setupPanel();
+		setupLayout();
+		setupListeners();
 	}	
 		public void setupPanel()
 		{
@@ -107,5 +111,13 @@ public class PokemonPanel extends JPanel
 		this.add(thirdType);
 		this.add(fourthType);
 		}
+	public void setupLayout();
+	{
+		
+	}
 	
+	public void setupListeners();
+	{
+		
+	}
 }
