@@ -1,6 +1,9 @@
 package pokemon.view;
 
 import pokemon.controller.PokemonController;
+
+import java.awt.Color;
+
 import javax.swing.*;
 
 public class PokemonPanel extends JPanel
@@ -15,6 +18,7 @@ public class PokemonPanel extends JPanel
 	private JLabel evolvableLabel;
 	private JLabel modifierLabel;
 	private JLabel iconLabel;
+	private JLabel iconLabel_1;
 	
 	private JCheckBox evolvableBox;
 	private JTextField nameField;
@@ -45,6 +49,20 @@ public class PokemonPanel extends JPanel
 		modifierField.setText(appController.getPokedex().get(index).getEnhancementModifier() + "");
 	}
 	
+	private void setupComboBox()
+	{
+		DefaultComboBoxModel pokemonModel = new DefaultComboBoxModel(appController.convertPokedex());
+		pokedexDropdown.setModel(pokemonModel);
+	}
+	
+	private void setupTypePanel()
+	{
+		firstType.setSize(50, 50);
+		secondType.setSize(50, 50);
+		thirdType.setSize(50, 50);
+		fourthType.setSize(50, 50);
+	}
+	
 	public PokemonPanel(PokemonController appController)
 	{
 		super();
@@ -62,6 +80,9 @@ public class PokemonPanel extends JPanel
 		attackField = new JTextField();
 		healthField = new JTextField();
 		modifierLabel = new JLabel();
+		
+		iconLabel_1 = new JLabel("", new ImageIcon(getClass().getResource("/pokemon/view/images/pokeball.png")), JLabel.CENTER);
+		appLayout.putConstraint(SpringLayout.WEST, iconLabel_1, 56, SpringLayout.WEST, this);
 		
 		descriptionArea = new JTextArea();
 		typeArea = new JTextArea();
@@ -81,16 +102,19 @@ public class PokemonPanel extends JPanel
 		thirdType = new JPanel();
 		fourthType = new JPanel();
 		
+		setupComboBox();
+		setupTypePanel();
 		setupPanel();
 		setupLayout();
 		setupListeners();
 	}	
 	public void setupPanel()
+
 	{
 		this.setLayout(appLayout);
 		
 		this.add(modifierField);
-		this.add(iconLabel);
+		this.add(iconLabel_1);
 		
 		evolvableBox = new JCheckBox();
 		appLayout.putConstraint(SpringLayout.WEST, nameField, 0, SpringLayout.WEST, evolvableBox);
@@ -120,6 +144,7 @@ public class PokemonPanel extends JPanel
 		healthLabel = new JLabel("Health");
 		this.add(healthLabel);
 		attackLabel = new JLabel("Attack");
+		appLayout.putConstraint(SpringLayout.SOUTH, iconLabel_1, 0, SpringLayout.SOUTH, attackLabel);
 		appLayout.putConstraint(SpringLayout.NORTH, nameField, 31, SpringLayout.NORTH, attackLabel);
 		appLayout.putConstraint(SpringLayout.SOUTH, attackLabel, -230, SpringLayout.SOUTH, this);
 		appLayout.putConstraint(SpringLayout.NORTH, healthLabel, 14, SpringLayout.SOUTH, attackLabel);
@@ -140,6 +165,40 @@ public class PokemonPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.EAST, evolvableLabel, -44, SpringLayout.WEST, evolvableBox);
 		this.add(evolvableLabel);
 	}
+	
+	private void updateTypePanels()
+	{
+		String[] types = appController.getPokedex().get(pokedexDropdown.getSelectedIndex()).getPokemonTypes();
+		
+		if(types[0].equals("Ice"))
+		{	
+			firstType.setBackground(Color.cyan);
+		}
+		else if (types[0].equals("Fairy"))
+		{
+			firstType.setBackground(Color.pink);
+		}
+		else
+		{
+			firstType.setBackground(Color.blue);
+		}
+		
+		if (types.length > 1)
+		{
+			if (types[1].equals("Fairy"))
+			{
+				secondType.setBackground(Color.pink);
+			}
+			
+			if (types.length == 3)
+			{
+				if (types[2].equals("Fairy:"))
+				{
+				thirdType.setBackground(Color.cyan);
+				}
+			}
+		}
+	}	
 //	public void setupLayout();
 //	{
 //		
