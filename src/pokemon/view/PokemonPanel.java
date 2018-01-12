@@ -102,7 +102,7 @@ public class PokemonPanel extends JPanel
 		setupPanel();
 		setupLayout();
 		setupListeners();
-	}	
+		}	
 	public void setupPanel()
 
 	{
