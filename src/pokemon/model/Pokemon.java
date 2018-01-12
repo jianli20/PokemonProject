@@ -29,14 +29,14 @@ public abstract class Pokemon
 			types = new String[pokemonTypes.length];
 		
 			for(int index = 0; index < types.length; index++)
-			{
+		{
 				String currentInterface = pokemonTypes[index].getCanonicalName();
 				currentInterface = currentInterface.replace(this.getClass().getPackage().getName() + ".",  "");
 				if(!parentType.contains(currentInterface))
 				{
 					parentType.add(currentInterface);
 				}
-			
+			}
 			currentClass = currentClass.getSuperclass();
 		}
 		
@@ -49,7 +49,6 @@ public abstract class Pokemon
 		
 		return types;
 		}
-	}
 	
 	public String toString()
 	{
