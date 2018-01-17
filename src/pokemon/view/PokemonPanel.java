@@ -100,11 +100,10 @@ public class PokemonPanel extends JPanel
 		
 		
 		descriptionArea = new JTextArea();
+		descriptionArea.setRows(4);
 		typeArea = new JTextArea();
-		appLayout.putConstraint(SpringLayout.NORTH, descriptionArea, 0, SpringLayout.SOUTH, typeArea);
 		saveButton = new JButton();
-		appLayout.putConstraint(SpringLayout.NORTH, typeArea, 0, SpringLayout.SOUTH, saveButton);
-		appLayout.putConstraint(SpringLayout.WEST, typeArea, 0, SpringLayout.WEST, saveButton);
+		
 
 		clearButton = new JButton();
 
@@ -112,9 +111,8 @@ public class PokemonPanel extends JPanel
 		firstType = new JPanel();
 		secondType = new JPanel();
 
-	
 
-		
+
 		setupComboBox();
 		setupTypePanel();
 		setupPanel();
@@ -266,8 +264,11 @@ public class PokemonPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.WEST, iconLabel, 10, SpringLayout.WEST, this);
 		appLayout.putConstraint(SpringLayout.SOUTH, iconLabel, 0, SpringLayout.SOUTH, evolvableBox);
 		appLayout.putConstraint(SpringLayout.EAST, iconLabel, 0, SpringLayout.EAST, firstType);
-		appLayout.putConstraint(SpringLayout.WEST, descriptionArea, 0, SpringLayout.WEST, saveButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, secondType, 34, SpringLayout.SOUTH, firstType);
+		appLayout.putConstraint(SpringLayout.NORTH, typeArea, 0, SpringLayout.SOUTH, saveButton);
+		appLayout.putConstraint(SpringLayout.WEST, typeArea, 0, SpringLayout.WEST, saveButton);
+		appLayout.putConstraint(SpringLayout.WEST, descriptionArea, 0, SpringLayout.WEST, pokedexDropdown);
+		appLayout.putConstraint(SpringLayout.NORTH, descriptionArea, 0, SpringLayout.SOUTH, typeArea);
 
 		
 	}
