@@ -4,7 +4,7 @@ public class Gabite extends Pokemon implements Dragon
 {
 	public Gabite()
 	{
-		super(444, "Garbite");
+		super(444, "Gabite");
 		setup();
 	}
 	public Gabite(String name)
